@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/yashu483/inventry-application/issues"
   },
-  "homepage": "https://github.com/yashu483/inventry-application#readme"
+  "homepage": "https://github.com/yashu483/inventry-application#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "pg": "^8.16.3"
+  }
 }
