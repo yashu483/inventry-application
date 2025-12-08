@@ -1,0 +1,20 @@
+{
+  "name": "inventry-application",
+  "version": "1.0.0",
+  "description": "Creating an inventory management application using Express and PostgreSQL for backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashu483/inventry-application.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yashu483/inventry-application/issues"
+  },
+  "homepage": "https://github.com/yashu483/inventry-application#readme"
+}
