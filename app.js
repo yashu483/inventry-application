@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 
-const PORT = 6004;
+const PORT = process.env.PORT || 6004;
 app.listen(PORT, () => {
   console.log(`App is running on server http://localhost:${PORT}`);
 });

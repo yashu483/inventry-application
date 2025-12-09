@@ -1,4 +1,4 @@
-const { Pool } = require("db");
+const { Pool } = require("pg");
 
 module.exports = new Pool({
   host: "localhost",
