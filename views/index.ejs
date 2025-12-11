@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
+    <link rel="stylesheet" href="/styles/root.css" />
     <title>Inventory Application</title>
   </head>
   <body>
@@ -11,15 +12,18 @@
     <main class="homepage-container">
       <aside class="sidebar">
         <nav>
-          <a href="">Home</a><a href="">Inventory</a><a href="">Genres</a
+          <a href="">Home</a><a href="">Books</a><a href="">Genres</a
           ><a href="">Add New Book</a>
         </nav>
       </aside>
       <section class="main-section">
-        <h1>Inventory Application</h1>
+        <div class="main-section-logo">
+          <img src="/images/inventory.png" alt="Inventory logo" />
+          <h1>Inventory Application</h1>
+        </div>
         <div class="routes">
           <div>
-            <img src="/images/book.jpg" alt="books icon" />
+            <img src="/images/books.png" alt="books icon" />
             <h2><%= books.length %> Books</h2>
           </div>
           <div>

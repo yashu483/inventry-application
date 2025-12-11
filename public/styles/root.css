@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Fredoka";
+  src: url("./../fonts/Fredoka-Variable.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("./../fonts/Roboto-Variable.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./../fonts/Inter-Variable.ttf") format("truetype");
+}
+
+:root {
+  font-family: "Roboto", "Fredoka", "Inter";
+}
