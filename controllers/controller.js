@@ -1,8 +1,9 @@
 const db = require("./../db/queries");
 
-const getBooks = async (req, res) => {
-  const rows = await db.getAllBooks();
-  res.render("index", { rows: rows });
+const homepageController = async (req, res) => {
+  const books = await db.getAllBooks();
+  const genres = await db.getGenreList();
+  res.render("index", { books: books, genres: genres });
 };
 
-module.exports = { getBooks };
+module.exports = { homepageController };

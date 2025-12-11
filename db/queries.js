@@ -38,9 +38,16 @@ const updateBook = async (book) => {
   );
 };
 
+// creating separate table to store genre list as there might be genre which do not have any book thus not being able to get using raw books able
+const getGenreList = async () => {
+  const { rows } = await pool.query("SELECT * FROM genres");
+  return rows;
+};
 module.exports = {
   getAllBooks,
   getAllBooksFromGenre,
   getBookDetailById,
   addNewBook,
+  updateBook,
+  getGenreList,
 };

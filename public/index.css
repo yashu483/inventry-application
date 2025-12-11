@@ -1,0 +1,88 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  padding: 0;
+  color: white;
+  display: grid;
+  grid-template-rows: 10vh 1fr 10vh;
+  background-color: yellow;
+}
+
+/* header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background-color: rgb(32, 31, 27);
+  border: 1px solid red;
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+}
+header > div > h1 {
+  margin: 0;
+}
+.header-logo {
+  width: 50px;
+  height: 50px;
+}
+
+/* main section */
+.homepage-container {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.sidebar {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 30px;
+  background-color: rgb(54, 53, 48);
+  border-right: 3px solid gold;
+}
+.sidebar > nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar > nav > a {
+  text-decoration: none;
+  color: white;
+}
+.main-section {
+  background-image: url("./images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+.routes {
+  display: flex;
+}
+.routes > div > img {
+  width: 30px;
+  aspect-ratio: 1 / 1;
+}
+
+/* footer styles */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(54, 53, 48);
+  border-top: 3px solid yellow;
+}
+
+footer a {
+  color: white;
+}
