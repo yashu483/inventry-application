@@ -1,0 +1,17 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.cards-section {
+  padding: 20px;
+  background-image: url("/images/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max-content, 1fr));
+}

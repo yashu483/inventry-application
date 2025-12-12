@@ -30,5 +30,4 @@ body {
   color: white;
   display: grid;
   grid-template-rows: 10vh 1fr 10vh;
-  background-color: yellow;
 }
