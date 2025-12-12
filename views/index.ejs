@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
     <link rel="stylesheet" href="/styles/root.css" />
+    <script src="/scripts/homepage.js"></script>
+    <script src="/scripts/header.js"></script>
     <title>Inventory Application</title>
   </head>
   <body>
@@ -22,11 +24,11 @@
           <h1>Inventory Application</h1>
         </div>
         <div class="routes">
-          <div>
+          <div id="all-books">
             <img src="/images/books.png" alt="books icon" />
             <h2><%= books.length %> Books</h2>
           </div>
-          <div>
+          <div id="genres">
             <img src="/images/genres.png" alt="Genres Icon" />
             <h2><%= genres.length%> Genres</h2>
           </div>
