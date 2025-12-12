@@ -4,22 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
-    <link rel="stylesheet" href="/styles/header.css" />
-    <link rel="stylesheet" href="/styles/footer.css" />
-    <link rel="stylesheet" href="/styles/root.css" />
+    <%- include('static-files') %>
     <script src="/scripts/homepage.js" defer></script>
-    <script src="/scripts/header.js" defer></script>
     <title>Inventory Application</title>
   </head>
   <body>
     <%- include('header') %>
     <main class="homepage-container">
-      <aside class="sidebar">
-        <nav>
-          <a href="/">Home</a><a href="/books">Books</a
-          ><a href="/genres">Genres</a><a href="/books/add">Add New Book</a>
-        </nav>
-      </aside>
+      <%- include('sidebar') %>
       <section class="main-section">
         <div class="main-section-logo">
           <img src="/images/inventory.png" alt="Inventory logo" />

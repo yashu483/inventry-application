@@ -6,4 +6,9 @@ const homepageController = async (req, res) => {
   res.render("index", { books: books, genres: genres });
 };
 
-module.exports = { homepageController };
+const getAllBooks = async (req, res) => {
+  const books = await db.getAllBooks();
+  res.render("books", { books: books });
+};
+
+module.exports = { homepageController, getAllBooks };
