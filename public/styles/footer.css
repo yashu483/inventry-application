@@ -1,0 +1,12 @@
+/* footer styles */
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(54, 53, 48);
+  border-top: 3px solid yellow;
+}
+
+footer a {
+  color: white;
+}
