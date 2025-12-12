@@ -1,18 +1,3 @@
-html {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  padding: 0;
-  color: white;
-  display: grid;
-  grid-template-rows: 10vh 1fr 10vh;
-  background-color: yellow;
-}
-
 /* main section */
 .homepage-container {
   display: grid;
@@ -90,6 +75,11 @@ body {
   border: 3px solid yellow;
   border-radius: 30px;
   background-color: rgb(54, 53, 48);
+  cursor: pointer;
+  transition: 0.3s ease transform;
+}
+.routes > div:hover {
+  transform: scale(1.03);
 }
 .routes > div > img {
   width: 60px;
