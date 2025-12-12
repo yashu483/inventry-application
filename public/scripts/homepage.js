@@ -3,6 +3,8 @@
 const allBooksLink = document.querySelector("#all-books");
 const genresLink = document.querySelector("#genres");
 
+console.log(typeof allBooksLink);
+console.log(allBooksLink);
 allBooksLink.addEventListener("click", (e) => {
   window.location.href = "/books";
 });
