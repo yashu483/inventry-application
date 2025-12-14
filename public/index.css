@@ -4,43 +4,6 @@
   grid-template-columns: 1fr 6fr;
 }
 
-.sidebar {
-  display: flex;
-  justify-content: center;
-  align-items: start;
-  padding: 30px;
-  background-color: rgb(54, 53, 48);
-  border-right: 3px solid gold;
-}
-.sidebar > nav {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-
-.sidebar > nav > a {
-  text-decoration: none;
-  text-align: center;
-  font-weight: 600;
-  color: white;
-  border-radius: 8px;
-  padding: 18px 30px;
-  width: 100%;
-}
-.sidebar > nav > a:hover,
-.sidebar > nav > a:visited,
-.sidebar > nav > a:active,
-.sidebar > nav > a::selection {
-  text-decoration: none;
-}
-
-.sidebar > nav > a:hover {
-  font-weight: 600;
-  color: black;
-  background-color: yellow;
-}
 .main-section {
   display: flex;
   flex-direction: column;

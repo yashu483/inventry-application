@@ -1,0 +1,12 @@
+.card {
+  display: flex;
+  padding: 10px 20px;
+  border: 2px solid goldenrod;
+  border-radius: 10px;
+}
+.card > img {
+  width: 100px;
+}
+
+.genres-in-card {
+}
