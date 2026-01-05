@@ -6,7 +6,8 @@ const { Client } = require("pg");
 
 const SQL = `CREATE TABLE IF NOT EXISTS genre (
 id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-name VARCHAR(255)
+genre_value VARCHAR(255),
+genre_label VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS book (
@@ -17,7 +18,37 @@ published_date DATE,
 description TEXT,
 genre_id INTEGER,
 FOREIGN KEY (genre_id) REFERENCES genre(id)
-)`;
+);`;
+
+// list of initial genres
+const initialGenres = [
+  { value: "adventure", label: "Adventure" },
+  { value: "thriller", label: "Thriller" },
+  { value: "young_adult", label: "Young Adult" },
+  { value: "folklore", label: "Folklore" },
+  { value: "cyberpunk", label: "Cyberpunk" },
+  { value: "sci_fi", label: "Sci-Fi" },
+  { value: "fantasy", label: "Fantasy" },
+  { value: "historical-fiction", label: "Historical Fiction" },
+  { value: "drama", label: "Drama" },
+  { value: "psychological-thriller", label: "Psychological Thriller" },
+  { value: "steampunk", label: "Steampunk" },
+  { value: "social_realism", label: "Social Realism" },
+  { value: "autobiography", label: "Autobiography" },
+  { value: "biography", label: "Biography" },
+  { value: "satire", label: "Satire" },
+  { value: "fiction", label: "Fiction" },
+  { value: "poem", label: "Poem" },
+  { value: "fairy_tale", label: "Fairy Tale" },
+  { value: "new_adult", label: "New Adult" },
+  { value: "comedy", label: "Comedy" },
+  { value: "romance", label: "Romance" },
+  { value: "mystery", label: "Mystery" },
+  { value: "dystopian_fiction", label: "Dystopian Fiction" },
+  { value: "novel", label: "Novel" },
+  { value: "utopian_fiction", label: "Utopian Fiction" },
+  { value: "action", label: "Action" },
+];
 
 const connectionString =
   argv[2] === "localdb"
@@ -32,6 +63,7 @@ const main = async () => {
 
   await client.connect();
   await client.query(SQL);
+  await client.query(sqlForGenreList, genreList);
   await client.end();
 
   console.log("done");
