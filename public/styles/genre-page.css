@@ -1,0 +1,38 @@
+main {
+  display: grid;
+  background-color: rgb(32, 31, 27);
+  grid-template-columns: 1fr 6fr;
+}
+
+.genre-page-section {
+  padding: 30px 100px;
+}
+
+#genre-filter-form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border: 2px solid goldenrod;
+  border-radius: 15px;
+}
+
+#genre-filter-form > .filter-genres {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  gap: 10px;
+}
+#genre-filter-form > .sorting-options-div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+#genre-filter-form > .form-apply-button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#genre-filter-form > h3 {
+  color: goldenrod0;
+}

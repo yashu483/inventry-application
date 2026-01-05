@@ -2,11 +2,52 @@
   display: flex;
   padding: 10px 20px;
   border: 2px solid goldenrod;
+  background-color: rgb(54, 53, 48);
+
   border-radius: 10px;
 }
-.card > img {
-  width: 100px;
+.book-details {
+  width: 100%;
+}
+.bottom-border {
+  width: 100%;
+  border-bottom: 3px solid white;
+  padding-bottom: 0.6lh;
+  margin: 0;
 }
 
-.genres-in-card {
+.above-border {
+  margin: 0;
+  padding-top: 0.6lh;
+}
+.card > img {
+  height: 180px;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 0.6lh;
+}
+
+.card-buttons > button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: rgb(86, 86, 77);
+  /* background-color: none; */
+  padding: 5px;
+  border: none;
+  border-radius: 8px;
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card-edit-button {
+  background-image: url("./../images/pencil.png");
+}
+
+.card-edit-button:hover {
+  cursor: pointer;
 }

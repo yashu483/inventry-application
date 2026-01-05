@@ -3,7 +3,7 @@ const { Router } = require("express");
 const genresRouter = Router();
 
 genresRouter.get("/", (req, res, next) => {
-  res.send("genres:: done");
+  res.render("genres");
 });
 
 module.exports = genresRouter;
