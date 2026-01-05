@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 const { argv } = require("node:process");
 require("dotenv").config();
+const db = require("./queries");
 
 const { Client } = require("pg");
 
@@ -50,6 +51,24 @@ const initialGenres = [
   { value: "action", label: "Action" },
 ];
 
+const populateGenre = async (arr, client) => {
+  const genreCount = await db.getGenreCount();
+  // current work here
+  if (genreCount !== 0) return;
+  try {
+    await client.query("BEGIN");
+    for (item of arr) {
+      await client.query(
+        "INSERT INTO genre (genre_value, genre_label) VALUES ($1, $2)",
+        [item.value, item.label]
+      );
+    }
+    await client.query("COMMIT");
+  } catch (err) {
+    await client.query("ROLLBACK");
+    throw err;
+  }
+};
 const connectionString =
   argv[2] === "localdb"
     ? process.env.LOCAL_DB_CONNECTION_STRING
@@ -63,10 +82,8 @@ const main = async () => {
 
   await client.connect();
   await client.query(SQL);
-  await client.query(sqlForGenreList, genreList);
+  await populateGenre(initialGenres, client);
   await client.end();
-
-  console.log("done");
 };
 
 main();

@@ -45,8 +45,8 @@ const getGenreList = async () => {
 };
 
 const getGenreCount = async () => {
-  const { row } = await pool.query("SELECT COUNT(*) FROM genre;");
-  const count = Number(row[0].count);
+  const { rows } = await pool.query("SELECT COUNT(*) FROM genre;");
+  const count = Number(rows[0].count);
   return count;
 };
 module.exports = {
@@ -56,4 +56,5 @@ module.exports = {
   addNewBook,
   updateBook,
   getGenreList,
+  getGenreCount,
 };
