@@ -2,7 +2,9 @@ const pool = require("./pool");
 
 // queries for book table
 const getAllBooks = async () => {
-  const { rows } = await pool.query(`SELECT * FROM book`);
+  const { rows } =
+    await pool.query(`SELECT book.name, book.author, book.published_date,book.description, genre.genre_label AS genre_name FROM book
+    JOIN genre ON (book.genre_id=genre.id) ORDER BY genre_name`);
   return rows;
 };
 

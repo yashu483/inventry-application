@@ -11,7 +11,7 @@
 }
 .bottom-border {
   width: 100%;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid green;
   padding-bottom: 0.6lh;
   margin: 0;
 }
@@ -50,4 +50,8 @@
 
 .card-edit-button:hover {
   cursor: pointer;
+}
+
+.genres-in-card {
+  color: greenyellow;
 }

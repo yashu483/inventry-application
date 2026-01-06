@@ -1,17 +1,27 @@
 main {
   display: grid;
   grid-template-columns: 1fr 6fr;
+  overflow: hidden;
 }
 
 .cards-section {
   padding: 20px;
-  background-image: url("/images/background.jpg");
+  background-color: rgb(32, 31, 27);
+  background-clip: border-box;
+  background-attachment: scroll;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100% 100%;
+  max-width: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(max-content, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+}
+.book-list-heading {
+  color: gold;
 }
