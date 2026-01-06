@@ -1,13 +1,14 @@
 const pool = require("./pool");
 
+// queries for book table
 const getAllBooks = async () => {
   const { rows } = await pool.query(`SELECT * FROM book`);
   return rows;
 };
 
-const getAllBooksFromGenre = async (genre) => {
-  const { rows } = await pool.query("SELECT * FROM book WHERE genre = $1", [
-    genre,
+const getAllBooksFromGenre = async (genreId) => {
+  const { rows } = await pool.query("SELECT * FROM book WHERE genre_id = $1", [
+    genreId,
   ]);
   return rows;
 };
@@ -17,10 +18,16 @@ const getBookDetailById = async (id) => {
   return rows;
 };
 
+const getAllBookCount = async () => {
+  const { rows } = await pool.query("SELECT COUNT(*) FROM book;");
+  const bookCount = Number(rows[0].count);
+  return bookCount;
+};
+
 const addNewBook = async (book) => {
   await pool.query(
-    "INSERT INTO book (book_name, author, published_date, genre, description) VALUES($1, $2,$3,$4,$5)",
-    [book.name, book.author, book.publishedDate, book.genre, book.description]
+    "INSERT INTO book (name, author, published_date,description,genre_id) VALUES($1, $2,$3,$4,$5)",
+    [book.name, book.author, book.publishedDate, book.description, book.genreId]
   );
 };
 
@@ -38,12 +45,19 @@ const updateBook = async (book) => {
   );
 };
 
-// creating separate table to store genre list as there might be genre which do not have any book thus not being able to get using raw books able
+// queries for genre table
 const getGenreList = async () => {
-  const { rows } = await pool.query("SELECT * FROM genre");
+  const { rows } = await pool.query(
+    "SELECT * FROM genre ORDER BY genre.genre_label"
+  );
   return rows;
 };
-
+const getGenreValueAndId = async () => {
+  const { rows } = await pool.query(
+    "SELECT genre.genre_value, genre.id FROM genre"
+  );
+  return rows;
+};
 const getGenreCount = async () => {
   const { rows } = await pool.query("SELECT COUNT(*) FROM genre;");
   const count = Number(rows[0].count);
@@ -53,8 +67,10 @@ module.exports = {
   getAllBooks,
   getAllBooksFromGenre,
   getBookDetailById,
+  getAllBookCount,
   addNewBook,
   updateBook,
   getGenreList,
+  getGenreValueAndId,
   getGenreCount,
 };
