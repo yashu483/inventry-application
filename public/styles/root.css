@@ -27,6 +27,7 @@ body {
   margin: 0;
   height: 100vh;
   padding: 0;
+  background-color: rgb(54, 53, 48);
   color: white;
   display: grid;
   grid-template-rows: 10vh 1fr 10vh;

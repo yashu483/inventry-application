@@ -1,0 +1,144 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.new-book-form-section {
+  background-color: rgb(32, 31, 27);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-book-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(54, 53, 48);
+  border: 2px solid gold;
+  flex: 1;
+  max-width: 80%;
+  padding: 30px;
+  padding-top: 0;
+}
+.new-book-form-container > h3 {
+  font-size: 30px;
+}
+.add-new-book-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  align-items: space-evenly;
+  gap: 50px;
+}
+.add-new-book-form label {
+  font-size: 1.1em;
+}
+.basic-info-section {
+  display: flex;
+  justify-content: flex-start;
+  /* flex-wrap: wrap; */
+  gap: 30px;
+  flex: 1;
+}
+.left-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
+}
+.left-container > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.left-container > div > input,
+.left-container > div > select {
+  width: 100%;
+  font-size: 1.1em;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 4px;
+  min-width: 200px;
+  color: white;
+  background-color: rgb(87, 87, 79);
+  border: none;
+}
+.add-new-book-form input:focus {
+  border: 2px solid blue !important;
+}
+.add-new-book-form input:active,
+.add-new-book-form select:focus,
+.add-new-book-form textarea:focus {
+  border: 2px solid blue;
+}
+.description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.description-container > textarea {
+  height: 100%;
+  width: 100%;
+  min-height: 350px;
+  max-width: 450px;
+  min-width: 200px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgb(87, 87, 79);
+  border: none;
+}
+
+.form-submit-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-width: 30%;
+  gap: 20px;
+}
+
+.form-submit-section > button {
+  font-size: 1.2em;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+  font-weight: 600;
+}
+
+.form-submit-section > button:hover {
+  transform: translateY(2px) scale(1.1);
+  border: 2px solid blue;
+}
+.form-submit-button {
+  background-color: black;
+  color: white;
+  border: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .add-new-book-form {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .basic-info-section {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    grid-template-rows: repeat(2, max-content);
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+}

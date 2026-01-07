@@ -7,11 +7,6 @@ main {
 .cards-section {
   padding: 20px;
   background-color: rgb(32, 31, 27);
-  background-clip: border-box;
-  background-attachment: scroll;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 100% 100%;
   max-width: 100%;
   overflow: scroll;
   overflow-x: hidden;

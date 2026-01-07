@@ -22,4 +22,10 @@ const getGenre = async (req, res) => {
   res.render("genres", { genres: genres });
 };
 
-module.exports = { homepageController, getAllBooks, getGenre };
+// return form page for creating new book
+const createBookGet = async (req, res) => {
+  const genres = await db.getGenreList();
+  res.render("newbook", { genres: genres });
+};
+
+module.exports = { homepageController, getAllBooks, getGenre, createBookGet };

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/newbook.css" />
+    <%- include('static-files') %>
+    <title>Add New Book</title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <main>
+      <%- include('sidebar') %>
+      <section class="new-book-form-section">
+        <div class="new-book-form-container">
+          <h3>New Book</h3>
+          <form action="/book/add" method="POST" class="add-new-book-form">
+            <div class="left-container">
+              <div><label for="name">Title</label><input type="text" /></div>
+              <div><label for="author">Author</label><input type="text" /></div>
+              <div>
+                <label for="date">Published Date</label><input type="date" />
+              </div>
+              <div>
+                <label for="genre_label">Genre</label
+                ><select name="genre_label" id="genre_label">
+                  <% genres.forEach((genre,index) => { %> <%-
+                  include('genre-select-options', {genre:genre, index:index}) %>
+                  <% }) %>
+                </select>
+              </div>
+            </div>
+            <div class="description-container">
+              <label for="description">Description</label>
+              <textarea
+                name="description"
+                id="description"
+                style="resize: none"
+              >
+              </textarea>
+            </div>
+            <div class="form-submit-section">
+              <button type="submit" class="form-submit-button">Create</button>
+              <button type="reset" class="form-reset-button">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <%- include('footer') %>
+  </body>
+</html>

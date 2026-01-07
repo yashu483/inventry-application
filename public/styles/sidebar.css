@@ -35,3 +35,14 @@
   color: black;
   background-color: yellow;
 }
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    height: 200px;
+    border: none;
+  }
+  .sidebar > nav {
+    display: flex;
+    flex-direction: row;
+  }
+}
