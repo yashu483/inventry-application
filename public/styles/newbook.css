@@ -121,7 +121,9 @@ main {
   color: white;
   border: none;
 }
-
+.input-required {
+  color: red;
+}
 @media screen and (max-width: 1100px) {
   .add-new-book-form {
     justify-content: center;

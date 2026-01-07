@@ -16,14 +16,25 @@
           <h3>New Book</h3>
           <form action="/book/add" method="POST" class="add-new-book-form">
             <div class="left-container">
-              <div><label for="name">Title</label><input type="text" /></div>
-              <div><label for="author">Author</label><input type="text" /></div>
               <div>
-                <label for="date">Published Date</label><input type="date" />
+                <label for="name"
+                  >Title <span class="input-required">*</span></label
+                ><input type="text" id="name" name="name" required />
               </div>
               <div>
-                <label for="genre_label">Genre</label
-                ><select name="genre_label" id="genre_label">
+                <label for="author"
+                  >Author <span class="input-required">*</span></label
+                ><input type="text" id="author" name="author" required />
+              </div>
+              <div>
+                <label for="date"
+                  >Published Date <span class="input-required">*</span></label
+                ><input type="date" name="published_date" id="date" required />
+              </div>
+              <div>
+                <label for="genre_label"
+                  >Genre <span class="input-required">*</span></label
+                ><select name="genre_label" id="genre_label" required>
                   <% genres.forEach((genre,index) => { %> <%-
                   include('genre-select-options', {genre:genre, index:index}) %>
                   <% }) %>
