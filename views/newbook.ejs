@@ -14,30 +14,59 @@
       <section class="new-book-form-section">
         <div class="new-book-form-container">
           <h3>New Book</h3>
-          <form action="/book/add" method="POST" class="add-new-book-form">
+          <form action="/books/add" method="POST" class="add-new-book-form">
             <div class="left-container">
+              <% if(errors){ %>
+              <ul style="color: red">
+                <% errors.forEach((error) => { %>
+
+                <li><%= error.msg %></li>
+
+                <%}) %>
+              </ul>
+              <% } %>
+
               <div>
                 <label for="name"
                   >Title <span class="input-required">*</span></label
-                ><input type="text" id="name" name="name" required />
+                ><input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value=" <%= prevFormData ? prevFormData.name : '' %>"
+                />
               </div>
               <div>
                 <label for="author"
                   >Author <span class="input-required">*</span></label
-                ><input type="text" id="author" name="author" required />
+                ><input
+                  type="text"
+                  id="author"
+                  name="author"
+                  required
+                  value="<%= prevFormData ? prevFormData.author : '' %>"
+                />
               </div>
               <div>
                 <label for="date"
                   >Published Date <span class="input-required">*</span></label
-                ><input type="date" name="published_date" id="date" required />
+                ><input
+                  type="date"
+                  name="published_date"
+                  id="date"
+                  required
+                  value="<%= prevFormData ? prevFormData.published_date : '' %>"
+                />
               </div>
               <div>
                 <label for="genre_label"
                   >Genre <span class="input-required">*</span></label
-                ><select name="genre_label" id="genre_label" required>
+                ><select name="genre_value" id="genre_label" required>
                   <% genres.forEach((genre,index) => { %> <%-
-                  include('genre-select-options', {genre:genre, index:index}) %>
-                  <% }) %>
+                  include('genre-select-options', {genre:genre, index:index,
+                  preGenreValue : prevFormData ? prevFormData.genre_value :
+                  false }) %> <% }) %>
                 </select>
               </div>
             </div>
@@ -48,7 +77,8 @@
                 id="description"
                 style="resize: none"
               >
-              </textarea>
+ <%= prevFormData ? prevFormData.description : '' %> </textarea
+              >
             </div>
             <div class="form-submit-section">
               <button type="submit" class="form-submit-button">Create</button>
@@ -60,4 +90,15 @@
     </main>
     <%- include('footer') %>
   </body>
+  <script defer>
+    const genreOptions = document.querySelectorAll(".genre-option");
+
+    const shouldSelectedOptionNode = genreOptions.find((genreNode) => {
+      return genreNode.prevGenreValue !== false;
+    });
+
+    if (shouldSelectedOptionNode) {
+      shouldSelectedOptionNode.selected = true;
+    }
+  </script>
 </html>

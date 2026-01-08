@@ -65,6 +65,14 @@ const getGenreCount = async () => {
   const count = Number(rows[0].count);
   return count;
 };
+const getGenreIdFromLabel = async (genreValue) => {
+  const { rows } = await pool.query(
+    "SELECT id FROM genre WHERE genre_value = $1",
+    [genreValue]
+  );
+  const genreId = Number(rows[0].id);
+  return genreId;
+};
 module.exports = {
   getAllBooks,
   getAllBooksFromGenre,
@@ -75,4 +83,5 @@ module.exports = {
   getGenreList,
   getGenreValueAndId,
   getGenreCount,
+  getGenreIdFromLabel,
 };

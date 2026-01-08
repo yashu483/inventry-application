@@ -1,1 +1,7 @@
-<option value="<%= genre.genre_value %>"><%= genre.genre_label %></option>
+<option
+  value="<%= genre.genre_value %>"
+  class="genre-option"
+  selected="<%= preGenreValue ? true :false %>"
+>
+  <%= genre.genre_label %>
+</option>
