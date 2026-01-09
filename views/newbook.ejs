@@ -64,9 +64,8 @@
                   >Genre <span class="input-required">*</span></label
                 ><select name="genre_id" id="genre_label" required>
                   <% genres.forEach((genre,index) => { %> <%-
-                  include('genre-select-options', {genre:genre, index:index,
-                  preGenreValue : prevFormData ? prevFormData.genre_value :
-                  false }) %> <% }) %>
+                  include('genre-select-options', {genre:genre, bookGenreId:
+                  prevFormData.genre_id }) %> <% }) %>
                 </select>
               </div>
             </div>
@@ -92,15 +91,4 @@
     </main>
     <%- include('footer') %>
   </body>
-  <script defer>
-    const genreOptions = document.querySelectorAll(".genre-option");
-
-    const shouldSelectedOptionNode = genreOptions.find((genreNode) => {
-      return genreNode.prevGenreValue !== false;
-    });
-
-    if (shouldSelectedOptionNode) {
-      shouldSelectedOptionNode.selected = true;
-    }
-  </script>
 </html>

@@ -2,7 +2,6 @@
   value="<%= genre.id%>"
   class="genre-option"
   id="<%= genre.genre_value %>"
-  selected="<%= preGenreValue ? true :false %>"
->
+ <%= bookGenreId === genre.id ? 'selected' : '' %>>
   <%= genre.genre_label %>
 </option>

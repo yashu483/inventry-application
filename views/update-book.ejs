@@ -67,10 +67,9 @@
                 <label for="genre_label"
                   >Genre <span class="input-required">*</span></label
                 ><select name="genre_value" id="genre_label" required>
-                  <% genres.forEach((genre,index) => { %> <%-
-                  include('genre-select-options', {genre:genre, index:index,
-                  preGenreValue : bookData ? bookData.genre_id : false }) %> <%
-                  }) %>
+                  <% genres.forEach((genre) => { %> <%-
+                  include('genre-select-options', {genre:genre, bookGenreId:
+                  bookData.genre_id}) %> <% }) %>
                 </select>
               </div>
             </div>
