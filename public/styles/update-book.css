@@ -3,14 +3,14 @@ main {
   grid-template-columns: 1fr 6fr;
 }
 
-.new-book-form-section {
+.update-book-section {
   background-color: rgb(32, 31, 27);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.new-book-form-container {
+.update-book-form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,10 +22,11 @@ main {
   padding: 30px;
   padding-top: 0;
 }
-.new-book-form-container > h3 {
+.update-book-form-container > h3 {
   font-size: 30px;
+  color: gold;
 }
-.add-new-book-form {
+.update-book-form {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -33,7 +34,7 @@ main {
   align-items: space-evenly;
   gap: 50px;
 }
-.add-new-book-form label {
+.update-book-form label {
   font-size: 1.1em;
 }
 .basic-info-section {
