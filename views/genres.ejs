@@ -13,7 +13,7 @@
     <main>
       <%- include('sidebar') %>
       <section class="genre-page-section">
-        <h1>Genres</h1>
+        <h1 class="genres-heading">Genres</h1>
         <form action="" method="GET" id="genre-filter-form">
           <h3>Filter</h3>
           <div class="filter-genres">
@@ -64,17 +64,19 @@
             <button type="submit">Apply Filters</button>
           </div>
         </form>
-        <div>
-          <h3>Books</h3>
+        <div class="books-container-in-genres">
+          <h3 class="books-heading">Books</h3>
           <% if(books.length === 0) {%>
           <h4>
             <b style="color: yellow"
               ><em>No books Found ! Make sure you selected a genre</em></b
             >
           </h4>
-
-          <% } %> <% books.forEach((book) => { %> <%- include('card',{book:
-          book} ) %> <% }) %>
+          <% } %>
+          <div class="cards-container">
+            <% books.forEach((book) => { %> <%- include('card',{book: book} ) %>
+            <% }) %>
+          </div>
         </div>
       </section>
     </main>

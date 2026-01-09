@@ -36,3 +36,14 @@ main {
 #genre-filter-form > h3 {
   color: goldenrod0;
 }
+
+.books-heading,
+.genres-heading {
+  font-size: 2em;
+  color: gold;
+}
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  gap: 20px;
+}
