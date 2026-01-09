@@ -17,8 +17,8 @@
         <form action="" method="GET" id="genre-filter-form">
           <h3>Filter</h3>
           <div class="filter-genres">
-            <% genres.forEach((genre) => {%> <%- include('genre-option',
-            {genre}) %> <% }) %>
+            <% genres.forEach((genre) => {%> <%- include('genre-option', {genre:
+            genre, selectedGenres: selectedGenres}) %> <% }) %>
           </div>
           <h3>Order By</h3>
           <div class="sorting-options-div">

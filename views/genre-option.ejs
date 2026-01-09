@@ -1,9 +1,7 @@
 <label for="genre">
-  <input
-    type="checkbox"
-    name="genre"
-    value="<%= genre.id %>"
-    id="<%= genre.genre_value %>"
-  />
-  <%= genre.genre_label %>
+  <input <% if(typeof selectedGenres === 'object'){%> <%=
+  selectedGenres.includes(String(genre.id)) ? 'checked': '' %> <%} %>
+  type="checkbox" name="genre" value="<%= genre.id %>" id="<%= genre.genre_value
+  %>" <% if(typeof selectedGenres === 'string') { %> <%= selectedGenres ==
+  genre.id ? 'checked' : '' %> <%} %> /> <%= genre.genre_label %>
 </label>

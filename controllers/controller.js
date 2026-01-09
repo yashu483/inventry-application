@@ -25,10 +25,14 @@ const genrePageGet = async (req, res) => {
   const genres = await db.getGenreList();
   if (filteredGenres) {
     const books = await db.getBooksByGenre(filteredGenres, sortBy);
-    res.render("genres", { genres: genres, books: books });
+    res.render("genres", {
+      genres: genres,
+      books: books,
+      selectedGenres: filteredGenres,
+    });
     return;
   }
-  res.render("genres", { genres: genres, books: [] });
+  res.render("genres", { genres: genres, books: [], selectedGenres: false });
 };
 
 const lengthErr = "must not be empty or more 200 characters";
