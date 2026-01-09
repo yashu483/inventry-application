@@ -37,7 +37,7 @@ const validateBookData = [
     .withMessage(`Author name ${lengthErr}`),
   body("description").trim(),
   body("published_date").trim().isISO8601().withMessage("Invalid date format"),
-  body("genre_value").trim().notEmpty().withMessage("Must Select a genre"),
+  body("genre_id").trim().notEmpty().withMessage("Must Select a genre"),
 ];
 // returns a Form page for creating new book
 const createBookGet = async (req, res) => {
@@ -80,6 +80,7 @@ const updateBookGet = async (req, res) => {
   const formattedDate = bookData.published_date
     ? bookData.published_date.toISOString().split("T")[0]
     : "";
+  // res.send(`${formattedDate} && ${bookData.genre_id} && ${genres[0].id}`);
   res.render("update-book", {
     genres: genres,
     bookData: { ...bookData, published_date: formattedDate },
@@ -102,15 +103,18 @@ const updateBookPost = [
       return;
     }
     const params = req.params;
+    const genreId = Number(bookData.genre_id);
+    const bookId = Number(params.bookid);
+    // res.send(`${genreId} && ${bookId}`);
     await db.updateBook({
       name: bookData.name,
       author: bookData.author,
-      published_date: formData.published_date,
-      description: formData.description,
-      genre_id: Number(formData.genre_id),
-      id: Number(params.bookid),
+      published_date: bookData.published_date,
+      description: bookData.description,
+      genre_id: genreId,
+      id: bookId,
     });
-    res.redirect("books");
+    res.redirect("/books");
   },
 ];
 module.exports = {

@@ -66,7 +66,7 @@
               <div>
                 <label for="genre_label"
                   >Genre <span class="input-required">*</span></label
-                ><select name="genre_value" id="genre_label" required>
+                ><select name="genre_id" id="genre_label" required>
                   <% genres.forEach((genre) => { %> <%-
                   include('genre-select-options', {genre:genre, bookGenreId:
                   bookData.genre_id}) %> <% }) %>
