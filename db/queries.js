@@ -3,7 +3,7 @@ const pool = require("./pool");
 // queries for book table
 const getAllBooks = async () => {
   const { rows } =
-    await pool.query(`SELECT book.name, book.author, book.published_date,book.description, genre.genre_label AS genre_name FROM book
+    await pool.query(`SELECT book.id, book.name, book.author, book.published_date,book.description, genre.genre_label AS genre_name FROM book
     JOIN genre ON (book.genre_id=genre.id) ORDER BY genre_name`);
   return rows;
 };
@@ -17,7 +17,7 @@ const getAllBooksFromGenre = async (genreId) => {
 
 const getBookDetailById = async (id) => {
   const { rows } = await pool.query("SELECT * FROM book WHERE id = $1", [id]);
-  return rows;
+  return rows[0];
 };
 
 const getAllBookCount = async () => {
@@ -35,13 +35,13 @@ const addNewBook = async (book) => {
 
 const updateBook = async (book) => {
   await pool.query(
-    "UPDATE book SET book_name = $1, author = $2, published_date = $3, genre = $4, description = $5  WHERE id = $6",
+    "UPDATE book SET name = $1, author = $2, published_date = $3, description = $4, genre_id = $5  WHERE id = $6",
     [
       book.name,
       book.author,
-      book.publishedDate,
-      book.genre,
+      book.published_date,
       book.description,
+      book.genre_id,
       book.id,
     ]
   );

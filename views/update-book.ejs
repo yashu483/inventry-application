@@ -3,18 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/newbook.css" />
     <%- include('static-files') %>
-    <title>Add New Book</title>
+    <title>Update Book</title>
   </head>
   <body>
     <%- include('header') %>
     <main>
       <%- include('sidebar') %>
-      <section class="new-book-form-section">
-        <div class="new-book-form-container">
-          <h3>New Book</h3>
-          <form action="/books/add" method="POST" class="add-new-book-form">
+      <section class="update-book-section">
+        <div class="update-book-form-container">
+          <h3>Update Book Info : <%= %></h3>
+          <form
+            action="/books/update/<%= bookData.id %>"
+            method="POST"
+            class="update-book-form"
+          >
             <div class="left-container">
               <% if(errors){ %>
               <ul style="color: red">
@@ -34,7 +37,7 @@
                   id="name"
                   name="name"
                   required
-                  value=" <%= prevFormData ? prevFormData.name : '' %>"
+                  value=" <%= bookData ? bookData.name : '' %>"
                 />
               </div>
               <div>
@@ -45,7 +48,7 @@
                   id="author"
                   name="author"
                   required
-                  value="<%= prevFormData ? prevFormData.author : '' %>"
+                  value="<%= bookData ? bookData.author : '' %>"
                 />
               </div>
               <div>
@@ -56,17 +59,17 @@
                   name="published_date"
                   id="date"
                   required
-                  value="<%= prevFormData ? prevFormData.published_date : '' %>"
+                  value="<%= bookData ? bookData.published_date : '' %>"
                 />
               </div>
               <div>
                 <label for="genre_label"
                   >Genre <span class="input-required">*</span></label
-                ><select name="genre_id" id="genre_label" required>
+                ><select name="genre_value" id="genre_label" required>
                   <% genres.forEach((genre,index) => { %> <%-
                   include('genre-select-options', {genre:genre, index:index,
-                  preGenreValue : prevFormData ? prevFormData.genre_value :
-                  false }) %> <% }) %>
+                  preGenreValue : bookData ? bookData.genre_id : false }) %> <%
+                  }) %>
                 </select>
               </div>
             </div>
@@ -77,7 +80,7 @@
                 id="description"
                 style="resize: none"
               >
- <%= prevFormData ? prevFormData.description : '' %> </textarea
+ <%= bookData ? bookData.description : '' %> </textarea
               >
             </div>
             <div class="form-submit-section">
@@ -90,15 +93,4 @@
     </main>
     <%- include('footer') %>
   </body>
-  <script defer>
-    const genreOptions = document.querySelectorAll(".genre-option");
-
-    const shouldSelectedOptionNode = genreOptions.find((genreNode) => {
-      return genreNode.prevGenreValue !== false;
-    });
-
-    if (shouldSelectedOptionNode) {
-      shouldSelectedOptionNode.selected = true;
-    }
-  </script>
 </html>

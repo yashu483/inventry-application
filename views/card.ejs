@@ -8,7 +8,11 @@
     <p class="bottom-border"><%= book.author %> | <%= book.published_date %></p>
     <p class="above-border"><%= book.description %></p>
     <div class="card-buttons">
-      <button type="button" class="card-edit-button"></button>
+      <button
+        type="button"
+        class="card-edit-button"
+        onclick="window.location.href='/books/update/<%= book.id %>'"
+      ></button>
     </div>
   </div>
 </div>

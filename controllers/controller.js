@@ -24,9 +24,7 @@ const getGenre = async (req, res) => {
   res.render("genres", { genres: genres });
 };
 
-const alphaErr = "must only contain letters";
 const lengthErr = "must not be empty or more 200 characters";
-const descriptionErr = "must be between atleast 10 to 1000 characters";
 
 const validateBookData = [
   body("name")
@@ -61,16 +59,58 @@ const createBookPost = [
         prevFormData: formData,
       });
     }
-    const genreId = await db.getGenreIdFromLabel(formData.genre_value);
+
     await db.addNewBook({
       name: formData.name,
       author: formData.author,
       publishedDate: formData.published_date,
       description: formData.description,
-      genreId: genreId,
+      genreId: Number(formData.genre_id),
     });
 
     res.redirect("/books");
+  },
+];
+
+const updateBookGet = async (req, res) => {
+  const params = req.params;
+  const genres = await db.getGenreList();
+  const bookData = await db.getBookDetailById(params.bookid);
+
+  const formattedDate = bookData.published_date
+    ? bookData.published_date.toISOString().split("T")[0]
+    : "";
+  res.render("update-book", {
+    genres: genres,
+    bookData: { ...bookData, published_date: formattedDate },
+    errors: false,
+  });
+};
+
+const updateBookPost = [
+  validateBookData,
+  async (req, res) => {
+    const errors = validationResult(req);
+    const bookData = matchedData(req);
+    if (!errors.isEmpty()) {
+      const genres = await db.getGenreList();
+      res.status(400).render("update-book", {
+        errors: errors.array(),
+        bookData: bookData,
+        genres: genres,
+      });
+      return;
+    }
+    const params = req.params;
+    await db.updateBook({
+      name: bookData.name,
+      author: bookData.author,
+      published_date: formData.published_date,
+      description: formData.description,
+      genre_id: Number(formData.genre_id),
+      id: Number(params.bookid),
+    });
+    res.redirect("books");
   },
 ];
 module.exports = {
@@ -79,4 +119,6 @@ module.exports = {
   getGenre,
   createBookGet,
   createBookPost,
+  updateBookGet,
+  updateBookPost,
 };
