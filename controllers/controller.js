@@ -25,9 +25,15 @@ const genrePageGet = async (req, res) => {
   const genres = await db.getGenreList();
   if (filteredGenres) {
     const books = await db.getBooksByGenre(filteredGenres, sortBy);
+    const removeTimeFromPublishedDate = books.map((book) => ({
+      ...book,
+      published_date: book.published_date
+        ? book.published_date.toISOString().split("T")[0]
+        : null,
+    }));
     res.render("genres", {
       genres: genres,
-      books: books,
+      books: removeTimeFromPublishedDate,
       selectedGenres: filteredGenres,
     });
     return;
