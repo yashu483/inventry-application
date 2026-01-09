@@ -47,6 +47,43 @@ const updateBook = async (book) => {
   );
 };
 
+// utility functions
+const getsSQLParametersForGenre = async (num) => {
+  let arr = [];
+  for (let i = 1; i <= num; i++) {
+    arr.push(`$${i}`);
+  }
+  const sqlParameter = arr.join(", ");
+
+  return sqlParameter;
+};
+// following function takes in a number that tells ORDER by value parameter position in query
+const getOrderByClauseNumber = async (pos) => {
+  return `$${pos}`;
+};
+
+const getBooksByGenre = async (filterGenres, sortBy) => {
+  if (filterGenres) {
+    if (typeof filterGenres === "object") {
+      const genreParameters = await getsSQLParametersForGenre(
+        filterGenres.length
+      );
+      const orderByClause = await getOrderByClauseNumber(
+        filterGenres.length + 1
+      );
+      await filterGenres.push(sortBy);
+      const completeSQL = `SELECT book.name, book.author, book.published_date, book.description, genre.genre_label AS genre_name  FROM book JOIN genre ON (book.genre_id = genre.id) WHERE book.genre_id IN ( ${genreParameters} ) ORDER BY ${orderByClause};`;
+      const { rows } = await pool.query(completeSQL, filterGenres);
+      return rows;
+    } else {
+      const arr = [filterGenres, sortBy];
+      const completeSQL = `SELECT book.name, book.author, book.published_date, book.description, genre.genre_label AS genre_name FROM book JOIN genre ON (book.genre_id=genre.id) WHERE genre_id = $1 ORDER BY $2`;
+      const { rows } = await pool.query(completeSQL, arr);
+      return rows;
+    }
+  }
+};
+
 // queries for genre table
 const getGenreList = async () => {
   const { rows } = await pool.query(
@@ -73,6 +110,7 @@ const getGenreIdFromLabel = async (genreValue) => {
   const genreId = Number(rows[0].id);
   return genreId;
 };
+
 module.exports = {
   getAllBooks,
   getAllBooksFromGenre,
@@ -84,4 +122,5 @@ module.exports = {
   getGenreValueAndId,
   getGenreCount,
   getGenreIdFromLabel,
+  getBooksByGenre,
 };

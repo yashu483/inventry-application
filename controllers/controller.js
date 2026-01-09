@@ -19,9 +19,16 @@ const getAllBooks = async (req, res) => {
   res.render("books", { books: removeTimeFromPublishedDate });
 };
 
-const getGenre = async (req, res) => {
+const genrePageGet = async (req, res) => {
+  const filteredGenres = req.query.genre;
+  const sortBy = req.query.sort;
   const genres = await db.getGenreList();
-  res.render("genres", { genres: genres });
+  if (filteredGenres) {
+    const books = await db.getBooksByGenre(filteredGenres, sortBy);
+    res.render("genres", { genres: genres, books: books });
+    return;
+  }
+  res.render("genres", { genres: genres, books: [] });
 };
 
 const lengthErr = "must not be empty or more 200 characters";
@@ -120,7 +127,7 @@ const updateBookPost = [
 module.exports = {
   homepageController,
   getAllBooks,
-  getGenre,
+  genrePageGet,
   createBookGet,
   createBookPost,
   updateBookGet,

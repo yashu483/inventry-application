@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include('static-files') %>
     <link rel="stylesheet" href="/styles/genre-page.css" />
+    <link rel="stylesheet" href="/styles/card.css" />
     <title>Inventory</title>
   </head>
   <body>
@@ -27,7 +28,7 @@
                 name="sort"
                 id="title-asc"
                 checked
-                value="title-asc"
+                value="name ASC"
               />
               <label for="title-asc">Title A-Z</label>
             </div>
@@ -36,16 +37,26 @@
                 type="radio"
                 name="sort"
                 id="title-desc"
-                value="title-desc"
+                value="name DESC"
               />
               <label for="title-desc">Title Z-A</label>
             </div>
             <div>
-              <input type="radio" name="sort" id="oldest" value="oldest" />
+              <input
+                type="radio"
+                name="sort"
+                id="oldest"
+                value="published_date ASC"
+              />
               <label for="oldest">Oldest</label>
             </div>
             <div>
-              <input type="radio" name="sort" id="newest" value="newest" />
+              <input
+                type="radio"
+                name="sort"
+                id="newest"
+                value="published_date DESC"
+              />
               <label for="newest">Newest</label>
             </div>
           </div>
@@ -53,6 +64,18 @@
             <button type="submit">Apply Filters</button>
           </div>
         </form>
+        <div>
+          <h3>Books</h3>
+          <% if(books.length === 0) {%>
+          <h4>
+            <b style="color: yellow"
+              ><em>No books Found ! Make sure you selected a genre</em></b
+            >
+          </h4>
+
+          <% } %> <% books.forEach((book) => { %> <%- include('card',{book:
+          book} ) %> <% }) %>
+        </div>
       </section>
     </main>
     <%- include('footer') %>
