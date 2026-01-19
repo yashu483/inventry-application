@@ -36,6 +36,11 @@
   background-color: yellow;
 }
 
+.selected-navigation-button {
+  font-weight: 600;
+  color: black !important;
+  background-color: yellow;
+}
 @media screen and (max-width: 768px) {
   .sidebar {
     height: 200px;
