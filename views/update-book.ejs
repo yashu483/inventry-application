@@ -13,7 +13,7 @@
       <%- include('sidebar') %>
       <section class="update-book-section">
         <div class="update-book-form-container">
-          <h3>Update Book: <%= bookData.name %><%= %></h3>
+          <h3>Update Book <%= bookData.name %><%= %></h3>
           <form
             action="/books/update/<%= bookData.id %>"
             method="POST"
