@@ -2,8 +2,6 @@
 
 <p><b>An Book Inventory Application that allows users to store book name, author name, genre and some other information about the books. Created specifically to practicing Database management and CRUD actions using Postgres. </b></p>
 
-### [Live Link]()
-
 <img max-width="80vw" src='./public/images/homepage-desktop.png' >
 
 # Table of Contents
