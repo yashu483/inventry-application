@@ -15,7 +15,6 @@
 5. [Backend Stack](#backend-stack)
 6. [Learning Outcomes](#learning-outcomes)
 7. [Acknowledgements](#acknowledgements)
-8. [Contact](#contact)
 
 ## Introduction
 
@@ -70,7 +69,3 @@ An application used to store book and its information. Made using Express and No
 
 - Images are used from [Freepik](https://www.freepik.com) , [Pixabay](https://pixabay.com)
 - Icons are downloaded from [Flaticon](https://www.flaticon.com)
-
-## Contact
-
-- Github
